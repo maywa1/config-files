@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  dotfilesPath = "${config.users.users.${user}.home}/nix-conf/dotfiles";
+  dotfilesPath = "${config.users.users.${user}.home}/nixos-conf/dotfiles";
 
   users = builtins.attrNames config.users.users;
 
