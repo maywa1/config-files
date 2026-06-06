@@ -5,4 +5,10 @@
   programs.hyprland.enable = true;
   programs.git.enable = true;
   programs.zsh.enable = true;
+  programs.neovim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      lazy-nvim
+    ];
+  };
 }

@@ -2,11 +2,11 @@
 
 {
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     git
     alacritty
     btop
     fastfetch
+    vencord
   ];
 }
