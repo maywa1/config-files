@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  dotfilesPath = ../dotfiles;
+  dotfilesPath = ../../dotfiles;
 
   users = builtins.attrNames config.users.users;
 
@@ -33,7 +33,7 @@ in
 
     system.activationScripts.dotfiles = ''
       echo "[dotfiles] linking configs for ${user}"
-      export HOME="/home/${user}"
+      export HOME="${config.users.users.${user}.home}"
 
       mkdir -p "$HOME/.config"
 
