@@ -10,5 +10,6 @@
     btop
     fastfetch
     vesktop
+    inputs.zen-browser.packages.${pkgs.system}.default
   ];
 }
