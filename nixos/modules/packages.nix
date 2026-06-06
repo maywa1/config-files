@@ -2,6 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    neovim
+    vimPlugins.LazyVim
     wget
     git
     alacritty
