@@ -9,6 +9,7 @@
     alacritty
     btop
     fastfetch
+    discord
     vencord
   ];
 }

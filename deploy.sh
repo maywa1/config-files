@@ -15,7 +15,7 @@ echo "Committing..."
 git commit -m "$COMMIT_MSG" || echo "No changes to commit."
 
 echo "Pushing..."
-git push
+git push --set-upstream master
 
 echo "Rebuilding NixOS for host: $HOSTNAME"
 sudo nixos-rebuild switch --flake ".#$HOSTNAME"
