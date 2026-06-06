@@ -9,7 +9,6 @@
     alacritty
     btop
     fastfetch
-    discord
-    vencord
+    vesktop
   ];
 }
