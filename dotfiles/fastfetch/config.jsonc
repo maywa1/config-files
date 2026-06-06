@@ -1,0 +1,120 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    "logo": {
+        "source": "~/.config/fastfetch/logo.txt"
+    },
+
+    "display": {
+        "separator": " ➜  "
+    },
+
+    "modules": [
+        {
+            "type": "os",
+            "key": "OS   ",
+            "keyColor": "31"
+        },
+        {
+            "type": "kernel",
+            "key": " ├  ",
+            "keyColor": "31"
+        },
+        {
+            "type": "uptime",
+            "key": " ├  ",
+            "keyColor": "31"
+        },
+        {
+            "type": "packages",
+            "format": "{} (pacman)",
+            "key": " ├  ",
+            "keyColor": "31"
+        },
+        {
+            "type": "shell",
+            "key": " ├  ",
+            "keyColor": "31"
+        },
+        {
+            "type": "editor",
+            "key": " ├  ",
+            "keyColor": "31"
+        },
+        {
+            "type": "wm",
+            "key": "WM   ",
+            "keyColor": "32"
+        },
+        {
+            "type": "de",
+            "key": " ├  ",
+            "keyColor": "32"
+        },
+        {
+            "type": "terminal",
+            "key": " ├  ",
+            "keyColor": "32"
+        },
+        {
+            "type": "host",
+            "format": "{5} {1} Type {2}",
+            "key": "PC   ",
+            "keyColor": "33"
+        },
+        {
+            "type": "cpu",
+            "format": "{1} ({3}) @ {7} GHz",
+            "key": " ├  ",
+            "keyColor": "33"
+        },
+        {
+            "type": "gpu",
+            "format": "{1} {2} @ {12} GHz",
+            "key": " ├  ",
+            "keyColor": "33"
+        },
+        {
+            "type": "memory",
+            "key": " ├  ",
+            "keyColor": "33"
+        },
+        {
+            "type": "disk",
+            "format": "{1} / {2} used",
+            "key": " ├  ",
+            "keyColor": "33"
+        },
+        {
+            "type": "battery",
+            "format": "{1}% ({2})",
+            "key": " ├  ",
+            "keyColor": "33"
+        },
+        {
+            "type": "network",
+            "format": "{1} ({2})",
+            "key": " ├  ",
+            "keyColor": "33"
+        },
+        {
+            "type": "processes",
+            "format": "{1} running",
+            "key": " ├  ",
+            "keyColor": "34"
+        },
+        {
+            "type": "locale",
+            "format": "{1}",
+            "key": " ├  ",
+            "keyColor": "34"
+        },
+        {
+            "type": "load",
+            "format": "{1}, {2}, {3}",
+            "key": " └  ",
+            "keyColor": "34"
+        }
+    ]
+}
+
