@@ -1,8 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
+
     dependencies = {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
@@ -25,102 +24,105 @@ return {
 
         require("fidget").setup({})
 
-        require("mason").setup({
-            registries = {
-                "github:mason-org/mason-registry",
-                "github:Crashdummyy/mason-registry",
-            },
+        -- Global defaults for all servers
+        vim.lsp.config("*", {
+            capabilities = capabilities,
         })
 
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "rust_analyzer",
-                "pyright",
-                "lua_ls",
-                "zls",
+        -- TypeScript
+        vim.lsp.enable("ts_ls")
+
+        -- Python
+        vim.lsp.enable("pyright")
+
+        -- Emmet
+        vim.lsp.enable("emmet_language_server")
+
+        -- Nix
+        vim.lsp.config("nixd", {
+            capabilities = capabilities,
+        })
+        vim.lsp.enable("nixd")
+
+        -- Rust
+        vim.lsp.config("rust_analyzer", {
+            capabilities = capabilities,
+            settings = {
+                ["rust-analyzer"] = {
+                    cargo = { allFeatures = true },
+                    procMacro = { enable = true },
+                    check = { command = "clippy" },
+                },
             },
-            handlers = {
-                -- Default handler
-                function(server_name)
-                    vim.lsp.config(server_name, {
-                        capabilities = capabilities,
-                    })
-                    vim.lsp.enable(server_name)
-                end,
+            on_attach = function(_, bufnr)
+                local opts = { buffer = bufnr, silent = true }
 
-                -- Zig language server
-                zls = function()
-                    vim.lsp.config("zls", {
-                        root_dir = vim.fs.root(0, { ".git", "build.zig", "zls.json" }),
-                        capabilities = capabilities,
-                        settings = {
-                            zls = {
-                                enable_inlay_hints = true,
-                                enable_snippets = true,
-                                warn_style = true,
-                            },
-                        },
-                        on_attach = function(client, bufnr)
-                            vim.g.zig_fmt_parse_errors = 0
-                            vim.g.zig_fmt_autosave = 0
-                        end,
-                    })
-                    vim.lsp.enable("zls")
-                end,
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+            end,
+        })
+        vim.lsp.enable("rust_analyzer")
 
-                -- Rust Analyzer
-                rust_analyzer = function()
-                    vim.lsp.config("rust_analyzer", {
-                        capabilities = capabilities,
-                        settings = {
-                            ["rust-analyzer"] = {
-                                cargo = { allFeatures = true },
-                                procMacro = { enable = true },
-                                check = { command = "clippy" },
-                            },
+        -- Lua
+        vim.lsp.config("lua_ls", {
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    runtime = {
+                        version = "Lua 5.1",
+                    },
+                    diagnostics = {
+                        globals = {
+                            "vim",
+                            "bit",
+                            "it",
+                            "describe",
+                            "before_each",
+                            "after_each",
                         },
-                        on_attach = function(_, bufnr)
-                            local opts = { buffer = bufnr, silent = true }
-                            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                        end,
-                    })
-                    vim.lsp.enable("rust_analyzer")
-                end,
-
-                -- Lua Language Server
-                lua_ls = function()
-                    vim.lsp.config("lua_ls", {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                runtime = { version = "Lua 5.1" },
-                                diagnostics = {
-                                    globals = { "vim", "bit", "it", "describe", "before_each", "after_each" },
-                                },
-                            },
-                        },
-                    })
-                    vim.lsp.enable("lua_ls")
-                end,
+                    },
+                },
             },
         })
+        vim.lsp.enable("lua_ls")
+
+        -- Zig
+        vim.lsp.config("zls", {
+            capabilities = capabilities,
+            root_dir = vim.fs.root(0, {
+                ".git",
+                "build.zig",
+                "zls.json",
+            }),
+            settings = {
+                zls = {
+                    enable_inlay_hints = true,
+                    enable_snippets = true,
+                    warn_style = true,
+                },
+            },
+            on_attach = function()
+                vim.g.zig_fmt_parse_errors = 0
+                vim.g.zig_fmt_autosave = 0
+            end,
+        })
+        vim.lsp.enable("zls")
 
         -- Completion setup
-        local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
         cmp.setup({
             snippet = {
                 expand = function(args)
                     require("luasnip").lsp_expand(args.body)
                 end,
             },
+
             mapping = cmp.mapping.preset.insert({
                 ["<Up>"] = cmp.mapping.select_prev_item(),
                 ["<Down>"] = cmp.mapping.select_next_item(),
                 ["<Tab>"] = cmp.mapping.confirm({ select = true }),
                 ["<C-F10>"] = cmp.mapping.complete(),
             }),
+
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
@@ -129,7 +131,6 @@ return {
             }),
         })
 
-        -- Diagnostics configuration
         vim.diagnostic.config({
             float = {
                 focusable = false,
@@ -142,4 +143,3 @@ return {
         })
     end,
 }
-

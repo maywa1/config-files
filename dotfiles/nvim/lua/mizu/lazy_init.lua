@@ -15,3 +15,4 @@ require("lazy").setup({
     spec = "mizu.lazy",
     change_detection = { notify = false }
 })
+

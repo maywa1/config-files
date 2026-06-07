@@ -9,12 +9,12 @@ end
 return {
 
     {
-        "aktersnurra/no-clown-fiesta.nvim",
+        "slugbyte/lackluster.nvim",
         config = function()
             vim.g.transparent_background = 1
             vim.o.background = "dark"
 
-            ColorMyPencils("no-clown-fiesta-dark")
+            ColorMyPencils("lackluster-dark")
         end
     },
 }
