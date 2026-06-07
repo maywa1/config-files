@@ -17,5 +17,6 @@
     ./modules/greetd.nix
     ./modules/gc.nix
     ./modules/env.nix
+    ./modules/zsh.nix
   ];
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   users.users.maywai = {
@@ -8,4 +8,5 @@
       tree
     ];
   };
+  users.defaultUserShell = pkgs.zsh;
 }
