@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     tree-sitter
+    brightnessctl
     neovim
     vimPlugins.LazyVim
     wget
