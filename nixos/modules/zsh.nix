@@ -1,51 +1,53 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.zsh = {
     enable = true;
 
-    # Enable command completion
     enableCompletion = true;
 
-    # History settings
     histSize = 10000;
 
     setOptions = [
-      "HIST_IGNORE_ALL_DUPS"  # ignore duplicate commands
-      "AUTO_CD"               # cd by typing folder name
-      "CORRECT"               # spell correction
-      "EXTENDED_GLOB"         # advanced globbing
+      "HIST_IGNORE_ALL_DUPS"
+      "AUTO_CD"
+      "CORRECT"
+      "EXTENDED_GLOB"
     ];
 
-    # Vim keybindings
-    keyBindings = "vi";
-
-    # Aliases
     shellAliases = {
       ll = "ls -la --color=auto";
       update = "sudo nixos-rebuild switch";
     };
 
-    # Prompt customization
+    # Prompt (clean monochrome + pastel pink user@host)
     promptInit = ''
       setopt PROMPT_SUBST
       PROMPT="%F{magenta}%n@%m%f %F{white}%~%f %# "
       RPROMPT="%F{cyan}[%D{%H:%M}]%f"
     '';
 
-    # Load autocomplete, syntax highlighting, autosuggestions
+    # vi mode + plugins
     interactiveShellInit = ''
-      # Load zsh plugins installed system-wide
+      # VI keybindings (this replaces keyBindings option)
+      bindkey -v
+
+      # Optional nicer vi mode cursor behavior
+      export KEYTIMEOUT=1
+
+      # Autosuggestions
       if [ -f ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
         source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
       fi
+
+      # Syntax highlighting (must be last)
       if [ -f ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source ${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       fi
     '';
   };
 
-  # Make sure the plugins are installed system-wide
+  # Required packages (system-wide)
   environment.systemPackages = with pkgs; [
     zsh
     zsh-autosuggestions
