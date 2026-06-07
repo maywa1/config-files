@@ -1,7 +1,8 @@
-{ config, lib, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
+    tree-sitter
     neovim
     vimPlugins.LazyVim
     wget
