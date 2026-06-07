@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    obsidian
     bibata-cursors
     hyprcursor
     udiskie
