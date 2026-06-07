@@ -21,6 +21,7 @@
     tmux
     lua51Packages.luarocks
     inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.zlaunch.packages.${pkgs.system}.default
     rust-analyzer
     lua-language-server
     zls
