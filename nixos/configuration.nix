@@ -15,5 +15,6 @@
     ./modules/fonts.nix
     ./modules/services.nix
     ./modules/greetd.nix
+    ./modules/gc.nix
   ];
 }
