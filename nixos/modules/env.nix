@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 {
   environment.sessionVariables = {
     XCURSOR_THEME = "Bibata-Modern-Classic";

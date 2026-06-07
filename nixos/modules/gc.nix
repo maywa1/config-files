@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 {
     nix.gc.automatic = true;
     nix.gc.date = "20:00";
