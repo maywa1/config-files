@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    bibata-cursors
     hyprcursor
     udiskie
     hyprpaper
