@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    udiskie
     hyprpaper
     tree-sitter
     brightnessctl
