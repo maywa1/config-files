@@ -16,5 +16,6 @@
     ./modules/services.nix
     ./modules/greetd.nix
     ./modules/gc.nix
+    ./modules/env.nix
   ];
 }
