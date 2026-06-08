@@ -85,11 +85,11 @@ hl.config({
         gaps_in  = 5,
         gaps_out = 5,
 
-        border_size = 1,
+        border_size = 3,
 
         col = {
             active_border = {
-                colors = {"rgba(aa6666ee)", "rgba(b37777ee)"},
+                colors = {"rgba(0b525bee)", "rgba(1b6b73ee)"};
                 angle = 45,
             },
             inactive_border = "rgba(595959aa)",
@@ -148,9 +148,9 @@ hl.animation({ leaf = "layersIn",      enabled = true,  speed = 4,    bezier = "
 hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  bezier = "linear",       style = "fade" })
 hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces",    enabled = false,  speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn",  enabled = false,  speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = false,  speed = 1.94, bezier = "almostLinear", style = "fade" })
+hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "quick", style = "slide" })
+hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "quick", style = "slide" })
+hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "quick", style = "slide" })
 hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/

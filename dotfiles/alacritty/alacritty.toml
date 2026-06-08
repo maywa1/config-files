@@ -29,3 +29,8 @@ blue = "#b1d8f6"
 magenta = "#fbdaff"
 cyan = "#1ab2a8"
 white = "#ffffff"
+
+[window]
+padding = { x = 3, y = 3 }
+dynamic_padding = true
+# opacity = 0.9
