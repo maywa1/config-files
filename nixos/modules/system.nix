@@ -6,7 +6,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelParams = [ "quiet" "splash" "loglevel=3" ];
-  boot.plymouth.enable = true;
+  boot.plymouth.enable = false;
 
   networking.hostName = "nixie";
 
