@@ -25,6 +25,7 @@
     tmux
     lua51Packages.luarocks
     inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.helium.packages.$(pkgs.system).default
     vicinae
     rust-analyzer
     lua-language-server
