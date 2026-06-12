@@ -18,5 +18,6 @@
     ./modules/gc.nix
     ./modules/env.nix
     ./modules/zsh.nix
+    ./modules/battery.nix
   ];
 }

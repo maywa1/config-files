@@ -3,38 +3,38 @@
 {
 
   environment.systemPackages = with pkgs; [
-    obsidian
+    alacritty
+    alejandra
     bibata-cursors
-    hyprcursor
-    udiskie
-    hyprpaper
-    tree-sitter
     brightnessctl
+    btop
+    cargo
+    emmet-language-server
+    fastfetch
+    gcc
+    git
+    hyprcursor
+    hyprpaper
+    inputs.helium.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.system}.default
+    lua-language-server
+    lua51Packages.luarocks
     neovim
+    nixd
+    nodejs
+    obsidian
+    pyright
+    python3
+    rust-analyzer
+    rustc
+    tmux
+    tree-sitter
+    typescript-language-server
+    udiskie
+    vesktop
+    vicinae
     vimPlugins.LazyVim
     wget
-    git
-    alacritty
-    btop
-    fastfetch
-    vesktop
-    cargo
-    rustc
-    gcc
-    python3
-    nodejs
-    tmux
-    lua51Packages.luarocks
-    inputs.zen-browser.packages.${pkgs.system}.default
-    inputs.helium.packages.${pkgs.system}.default
-    vicinae
-    rust-analyzer
-    lua-language-server
     zls
-    pyright
-    typescript-language-server
-    emmet-language-server
-    nixd
-    alejandra
   ];
 }
