@@ -16,7 +16,6 @@
     hyprcursor
     hyprpaper
     inputs.helium.packages.${pkgs.system}.default
-    inputs.zen-browser.packages.${pkgs.system}.default
     lua-language-server
     lua51Packages.luarocks
     neovim
