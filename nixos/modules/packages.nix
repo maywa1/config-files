@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
+
   environment.systemPackages = with pkgs; [
     obsidian
     bibata-cursors

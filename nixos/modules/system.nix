@@ -8,6 +8,8 @@
   boot.kernelParams = [ "quiet" "splash" "loglevel=3" ];
   boot.plymouth.enable = false;
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   networking.hostName = "nixie";
 
   time.timeZone = "Europe/Lisbon";
