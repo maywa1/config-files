@@ -32,6 +32,9 @@ return {
         -- TypeScript
         vim.lsp.enable("ts_ls")
 
+        -- Svelte
+        vim.lsp.enable("svelteserver")
+
         -- Python
         vim.lsp.enable("pyright")
 
