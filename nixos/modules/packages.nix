@@ -14,6 +14,7 @@
     gcc
     git
     hyprcursor
+    hyprlock
     hyprpaper
     inputs.helium.packages.${pkgs.system}.default
     lua-language-server

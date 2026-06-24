@@ -43,6 +43,7 @@ local menu        = "vicinae toggle"
 -- Or execute your favorite apps at launch like this:
 hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprpaper")
+  hl.exec_cmd("waybar")
   hl.exec_cmd("vicinae server")
 end)
 
@@ -249,6 +250,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -263,6 +265,10 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + " .. key,             hl.dsp.focus({ workspace = i}))
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
+
+-- Switch to / move window to discord workspace (vesktop)
+hl.bind(mainMod .. " + D",         hl.dsp.focus({ workspace = "discord" }))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = "discord" }))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
@@ -331,6 +337,13 @@ hl.window_rule({
 --     no_anim = true,
 -- })
 -- overlayLayerRule:set_enabled(false)
+
+-- Vesktop -> discord workspace
+hl.window_rule({
+    name  = "vesktop-discord",
+    match = { class = "vesktop" },
+    workspace = "discord",
+})
 
 -- Hyprland-run windowrule
 hl.window_rule({

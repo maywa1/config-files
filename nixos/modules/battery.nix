@@ -5,6 +5,10 @@
   };
 
   services = {
+    upower = {
+      enable = true;
+      criticalPowerAction = "Hibernate";
+    };
 
     # Keep auto-cpufreq as your SINGLE source of truth for CPU power management
     auto-cpufreq = {
@@ -15,7 +19,7 @@
           turbo = "never";
         };
         charger = {
-          governor = "performance"; # CHANGED: Prevents the "laggy" feeling when plugged in
+          governor = "performance";
           turbo = "auto";
         };
       };
