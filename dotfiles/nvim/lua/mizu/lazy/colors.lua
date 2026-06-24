@@ -11,12 +11,12 @@ end
 return {
 
     {
-        "Mofiqul/vscode.nvim",
+        "vague-theme/vague.nvim",
         config = function()
             vim.g.transparent_background = 1
             vim.o.background = "dark"
 
-            ColorMyPencils("vscode")
+            ColorMyPencils("vague")
         end
     },
 }

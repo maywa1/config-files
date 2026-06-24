@@ -31,8 +31,9 @@ hl.monitor({
 local terminal    = "alacritty"
 local fileManager = "dolphin"
 local menu        = "vicinae toggle"
-
-
+local discord_workspace = 11
+local gaps = {top = 10, bottom = 10, left = 100, right = 100}
+local zen_enabled = false
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -45,6 +46,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("waybar")
   hl.exec_cmd("vicinae server")
+  hl.exec_cmd("vesktop")
 end)
 
 
@@ -157,7 +159,7 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
 -- uncomment all if you wish to use that.
-hl.workspace_rule({ workspace = "w[tv1]", gaps_out = 0, gaps_in = 0 })
+hl.workspace_rule({ workspace = "w[tv1]", gaps_out = gaps, gaps_in = 0 })
 hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
 hl.window_rule({
     name  = "no-gaps-wtv1",
@@ -250,7 +252,19 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
+hl.bind(mainMod .. " + Z", function()
+    zen_enabled = not zen_enabled
+
+    if zen_enabled then
+        gaps = 0
+    else
+        gaps = {top = 10, bottom = 10, left = 100, right = 100}
+    end
+
+    hl.workspace_rule({ workspace = "w[tv1]", gaps_out = gaps, gaps_in = 0 })
+    hl.workspace_rule({ workspace = "f[1]",   gaps_out = 0, gaps_in = 0 })
+    hl.exec_cmd("pkill -SIGUSR1 waybar")
+end)
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Move focus with mainMod + arrow keys
@@ -268,8 +282,8 @@ for i = 1, 10 do
 end
 
 -- Switch to / move window to discord workspace (vesktop)
-hl.bind(mainMod .. " + D",         hl.dsp.focus({ workspace = "discord" }))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = "discord" }))
+hl.bind(mainMod .. " + D",         hl.dsp.focus({ workspace = discord_workspace }))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = discord_workspace }))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
@@ -341,9 +355,9 @@ hl.window_rule({
 
 -- Vesktop -> discord workspace
 hl.window_rule({
-    name  = "vesktop-discord",
+    name  = "discord",
     match = { class = "vesktop" },
-    workspace = "discord",
+    workspace = discord_workspace,
 })
 
 -- Hyprland-run windowrule
