@@ -37,5 +37,7 @@
     waybar
     wget
     zls
+    prettier
+    uv
   ];
 }
