@@ -33,7 +33,7 @@ return {
         vim.lsp.enable("ts_ls")
 
         -- Svelte
-        vim.lsp.enable("svelteserver")
+        vim.lsp.enable("svelte")
 
         -- Python
         vim.lsp.enable("pyright")

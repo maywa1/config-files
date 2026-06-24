@@ -33,6 +33,7 @@
     vesktop
     vicinae
     vimPlugins.LazyVim
+    waybar
     wget
     zls
   ];

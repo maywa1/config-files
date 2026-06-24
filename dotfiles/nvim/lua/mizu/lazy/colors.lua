@@ -11,12 +11,12 @@ end
 return {
 
     {
-        "slugbyte/lackluster.nvim",
+        "Mofiqul/vscode.nvim",
         config = function()
             vim.g.transparent_background = 1
             vim.o.background = "dark"
 
-            ColorMyPencils("lackluster-dark")
+            ColorMyPencils("vscode")
         end
     },
 }
