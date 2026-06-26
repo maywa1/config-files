@@ -23,6 +23,7 @@
     nixd
     nodejs
     obsidian
+    prettier
     pyright
     python3
     rust-analyzer
@@ -31,13 +32,13 @@
     tree-sitter
     typescript-language-server
     udiskie
+    uv
     vesktop
     vicinae
     vimPlugins.LazyVim
     waybar
     wget
+    wl-clipboard
     zls
-    prettier
-    uv
   ];
 }
