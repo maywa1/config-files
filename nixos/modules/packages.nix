@@ -26,12 +26,14 @@
     prettier
     pyright
     python3
+    ripgrep
     rust-analyzer
     rustc
     tmux
     tree-sitter
     typescript-language-server
     udiskie
+    universal-android-debloater
     uv
     vesktop
     vicinae
