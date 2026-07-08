@@ -42,5 +42,6 @@
     wget
     wl-clipboard
     zls
+    prismlauncher
   ];
 }
