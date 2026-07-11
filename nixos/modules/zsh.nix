@@ -29,6 +29,8 @@
 
     # vi mode + plugins
     interactiveShellInit = ''
+      export EDITOR="nvim"
+      export VISUAL="nvim"
       # VI keybindings (this replaces keyBindings option)
       bindkey -v
 
