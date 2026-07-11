@@ -31,6 +31,7 @@
     interactiveShellInit = ''
       export EDITOR="nvim"
       export VISUAL="nvim"
+      export PATH="$HOME/.cargo/bin:$PATH"
       # VI keybindings (this replaces keyBindings option)
       bindkey -v
 
