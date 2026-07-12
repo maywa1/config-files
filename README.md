@@ -4,9 +4,14 @@ Use the script to deploy changes easily:
 $ ./deploy.sh <commit message>
 ```
 
-When developing you usually want to be able to see the changes you do so I added a dev mode script, which symlinks the ./dotfiles dir directly to your .config, but depending on the program like hyprland, you'll have to restart the environment for it to read the new symlink instead of the /nix/store one:
+This one is simalira to deploy but does not push the changes only commits
+```
+$ ./quick-update.sh <commit message>
+```
+
+Apply dotfiles takes the dotfiles from the $HOME/.config that have an equivalent in directory in ~/nix-conf/dotfiles/
 
 ```
-$ ./dev-mode.sh
+$ ./apply-dotfiles.sh
 ```
 

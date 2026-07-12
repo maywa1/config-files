@@ -29,6 +29,9 @@ return {
             capabilities = capabilities,
         })
 
+        -- Haskell
+        vim.lsp.enable("hls")
+
         -- TypeScript
         vim.lsp.enable("ts_ls")
 

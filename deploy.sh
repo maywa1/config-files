@@ -5,6 +5,11 @@ set -euo pipefail
 COMMIT_MSG="${1:-BAM!}"
 HOSTNAME="$(hostname)"
 
+set -euo pipefail
+
+echo "applying dotfiles in .config"
+./apply-dotfiles.sh
+
 echo "Updating flake inputs..."
 nix flake update
 

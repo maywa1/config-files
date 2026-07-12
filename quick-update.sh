@@ -5,6 +5,9 @@ set -euo pipefail
 COMMIT_MSG="${1:-Quick update, like new package}"
 HOSTNAME="$(hostname)"
 
+echo "applying dotfiles in .config"
+./apply-dotfiles.sh
+
 echo "Updating flake inputs..."
 nix flake update
 
@@ -17,4 +20,3 @@ git commit -m "$COMMIT_MSG" || echo "No changes to commit."
 echo "Rebuilding NixOS for host: $HOSTNAME"
 sudo nixos-rebuild switch --flake ".#$HOSTNAME"
 
-./dev-mode.sh
