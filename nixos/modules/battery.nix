@@ -2,7 +2,7 @@
   powerManagement.enable = true;
 
   services = {
-    logind.settings.login = {
+    logind.settings.Login = {
         HandleLowBattery = "hibernate";
     };
 
