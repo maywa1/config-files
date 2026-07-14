@@ -2,9 +2,9 @@
   powerManagement.enable = true;
 
   services = {
-    logind.extraConfig = ''
-      HandleLowBattery=hibernate
-    '';
+    logind.settings.login = {
+        HandleLowBattery = "hibernate";
+    };
 
     upower.enable = true;
 
