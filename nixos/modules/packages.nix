@@ -43,5 +43,6 @@
     wl-clipboard
     zls
     prismlauncher
+    hyprshot
   ];
 }
