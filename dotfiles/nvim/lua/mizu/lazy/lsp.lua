@@ -30,6 +30,9 @@ return {
         })
 
         -- Haskell
+        vim.lsp.enable("clangd")
+
+        -- Haskell
         vim.lsp.enable("hls")
 
         -- TypeScript

@@ -31,7 +31,7 @@ hl.monitor({
 local terminal    = "alacritty"
 local fileManager = "dolphin"
 local menu        = "vicinae toggle"
-local discord_workspace = 11
+local discord_workspace = "discord"
 local gaps = {top = 10, bottom = 10, left = 100, right = 100}
 local zen_enabled = false
 -------------------
@@ -46,7 +46,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("hyprpaper")
   hl.exec_cmd("waybar")
   hl.exec_cmd("vicinae server")
-  hl.exec_cmd("vesktop")
+  hl.exec_cmd("vesktop --start-minimized")
 end)
 
 
@@ -282,13 +282,13 @@ for i = 1, 10 do
     hl.bind(mainMod .. " + SHIFT + " .. key,     hl.dsp.window.move({ workspace = i }))
 end
 
--- Switch to / move window to discord workspace (vesktop)
-hl.bind(mainMod .. " + D",         hl.dsp.focus({ workspace = discord_workspace }))
-hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = discord_workspace }))
+-- Switch to / move window to discord workspace (vesktop, special workspace)
+hl.bind(mainMod .. " + D",         hl.dsp.workspace.toggle_special(discord_workspace))
+hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = "special:" .. discord_workspace }))
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("hyprshot -m region --clipboard-only"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region"))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -354,11 +354,11 @@ hl.window_rule({
 -- })
 -- overlayLayerRule:set_enabled(false)
 
--- Vesktop -> discord workspace
+-- Vesktop -> discord special workspace, opened silently (doesn't steal focus / doesn't switch you to it)
 hl.window_rule({
     name  = "discord",
     match = { class = "vesktop" },
-    workspace = discord_workspace,
+    workspace = "special:" .. discord_workspace .. " silent",
 })
 
 -- Hyprland-run windowrule
