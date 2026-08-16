@@ -12,9 +12,6 @@ keybinds =
     , ("M-c",      kill)
     , ("M-S-r",      spawn "xmonad --recompile && xmonad --restart")
 
-    -- Layout
-    , ("M-<Space>",  sendMessage NextLayout)
-
     -- Increase/decrease master count
     , ("M-,",        sendMessage (IncMasterN 1))
     , ("M-.",        sendMessage (IncMasterN (-1)))
@@ -36,7 +33,8 @@ main = do
             , focusedBorderColor = "#88c0d0"
             , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
             , layoutHook         = myLayout
-            , manageHook         = manageDocks <+> myManageHook }
+            , manageHook         = manageDocks <+> myManageHook
+            }
         `additionalKeysP` keybinds
 
 myLayout =

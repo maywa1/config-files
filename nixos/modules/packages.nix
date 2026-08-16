@@ -53,5 +53,7 @@ in{
     hs.hoogle
     cabal-cli
     dmenu
+    xclip
+    flameshot
   ];
 }

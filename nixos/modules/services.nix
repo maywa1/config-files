@@ -11,6 +11,7 @@
     enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
+    libinput.naturalScrolling = true;
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
