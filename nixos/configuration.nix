@@ -14,7 +14,6 @@
     ./modules/packages.nix
     ./modules/fonts.nix
     ./modules/services.nix
-    ./modules/greetd.nix
     ./modules/gc.nix
     ./modules/env.nix
     ./modules/zsh.nix
