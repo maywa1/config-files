@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
-
-{
+let
+    hs = pkgs.haskellPackages;
+in{
 
   environment.systemPackages = with pkgs; [
     alacritty
@@ -45,8 +46,11 @@
     prismlauncher
     hyprshot
     xmobar
-    haskell-language-server
-    ghc
+    hs.ghc
+    hs.cabal-install
+    hs.haskell-language-server
+    hs.hlint
+    hs.hoogle
     cabal-cli
     dmenu
   ];
