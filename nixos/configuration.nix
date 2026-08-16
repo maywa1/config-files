@@ -4,7 +4,6 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ./modules/dotfiles.nix
     ./hardware-configuration.nix
     ./modules/system.nix
     ./modules/keyboard.nix

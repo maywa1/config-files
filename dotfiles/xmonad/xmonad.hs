@@ -18,6 +18,16 @@ keybinds =
 
     -- Lock screen
     , ("M-C-l",      spawn "i3lock")
+
+    -- Brightness (brightnessctl)
+    , ("<XF86MonBrightnessUp>",    spawn "brightnessctl set +5%")
+    , ("<XF86MonBrightnessDown>",  spawn "brightnessctl set 5%-")
+
+    -- Volume (pipewire / wpctl)
+    , ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
+    , ("<XF86AudioLowerVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
+    , ("<XF86AudioMute>",        spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
+    , ("<XF86AudioMicMute>",     spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
     ]
 
 main :: IO ()
