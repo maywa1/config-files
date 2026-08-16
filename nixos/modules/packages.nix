@@ -44,5 +44,10 @@
     zls
     prismlauncher
     hyprshot
+    xmobar
+    haskell-language-server
+    ghc
+    cabal-cli
+    dmenu
   ];
 }

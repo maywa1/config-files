@@ -5,6 +5,16 @@
 
   services.udisks2.enable = true;
 
+  services.xserver = {
+    enable = true;
+    autoRepeatDelay = 200;
+    autoRepeatInterval = 35;
+    windowManager.xmonad = {
+      enable = true;
+      enableContribAndExtras = true;
+    };
+  };
+
   systemd.user.services.udiskie = {
     description = "Automount removable drives with udiskie";
     wantedBy = [ "default.target" ];
