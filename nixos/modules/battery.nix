@@ -4,12 +4,7 @@
   services = {
 
     upower.enable = true;
-    upower.settings = {
-        PercentageLow = 15;
-        PercentageCritical = 5;
-        PercentageAction = 3;
-        CriticalPowerAction = "Hibernate";
-    };
+    upower.criticalPowerAction = "Hibernate";
 
     tlp = {
       enable = true;
