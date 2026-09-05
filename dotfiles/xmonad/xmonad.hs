@@ -1,38 +1,63 @@
 import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Hooks.ManageDocks
-import XMonad.Layout.Spacing
-import XMonad.Util.Run (spawnPipe)
-import System.IO (Handle)
+import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers (isDialog, doCenterFloat)
+import XMonad.Layout.Spacing
+import XMonad.Layout.NoBorders (smartBorders)
+import qualified XMonad.StackSet as W
+import XMonad.Util.Run (spawnPipe)
+import System.IO (Handle, hPutStrLn)
 
 keybinds =
     [ ("M-<Return>", spawn "alacritty")
-    , ("M-<Space>",        spawn "dmenu_run")
-    , ("M-c",      kill)
+    , ("M-<Space>",  spawn "dmenu_run -i -l 15 -fn 'JetBrainsMono Nerd Font:size=12' -nb '#1d1f21' -nf '#c5c8c6' -sb '#81a2be' -sf '#1d1f21' -p '>'")
+    , ("M-c",        kill)
     , ("M-S-r",      spawn "xmonad --recompile && xmonad --restart")
+    , ("M-S-q",      spawn "xmonad --recompile && xmonad --restart") -- alias, some muscle memory expects this
 
-    -- Increase/decrease master count
-    , ("M-,",        sendMessage (IncMasterN 1))
-    , ("M-.",        sendMessage (IncMasterN (-1)))
+    -- Master pane
+    , ("M-,", sendMessage (IncMasterN 1))
+    , ("M-.", sendMessage (IncMasterN (-1)))
 
-    -- Lock screen
-    , ("M-C-l",      spawn "i3lock")
+    -- Lock / power
+    , ("M-C-l", spawn "i3lock")
+    , ("M-S-e", spawn "systemctl suspend")
 
-    -- Brightness (brightnessctl)
-    , ("<XF86MonBrightnessUp>",    spawn "brightnessctl set +5%")
-    , ("<XF86MonBrightnessDown>",  spawn "brightnessctl set 5%-")
+    , ("M-d", windows $ W.greedyView "d")
 
-    -- Volume (pipewire / wpctl)
+    -- Screenshots (needs maim + slop + xclip, or swap for scrot)
+    , ("<Print>",   spawn "maim ~/Pictures/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png")
+    , ("M-<Print>", spawn "maim -s ~/Pictures/screenshots/$(date +%Y-%m-%d_%H-%M-%S).png") -- select region
+    , ("M-S-<Print>", spawn "maim -s | xclip -selection clipboard -t image/png") -- select -> clipboard
+
+    -- Brightness
+    , ("<XF86MonBrightnessUp>",   spawn "brightnessctl set +5%")
+    , ("<XF86MonBrightnessDown>", spawn "brightnessctl set 5%-")
+
+    -- Keyboard backlight (skip if your keyboard has none — harmless no-op if device missing)
+    , ("<XF86KbdBrightnessUp>",   spawn "brightnessctl -d *::kbd_backlight set +10%")
+    , ("<XF86KbdBrightnessDown>", spawn "brightnessctl -d *::kbd_backlight set 10%-")
+
+    -- Volume
     , ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
     , ("<XF86AudioLowerVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
     , ("<XF86AudioMute>",        spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
     , ("<XF86AudioMicMute>",     spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
+
+    -- Media playback (works with playerctl + most players: Spotify, mpv, browsers)
+    , ("<XF86AudioPlay>",  spawn "playerctl play-pause")
+    , ("<XF86AudioNext>",  spawn "playerctl next")
+    , ("<XF86AudioPrev>",  spawn "playerctl previous")
+    , ("<XF86AudioStop>",  spawn "playerctl stop")
+
+    -- Airplane/WiFi toggle (adjust device name via `nmcli device`)
+    , ("<XF86WLAN>", spawn "nmcli radio wifi toggle")
     ]
 
 main :: IO ()
 main = do
-    xmobarProc <- spawnPipe "xmobar"
+    xmobarProc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
     xmonad
         . docks
         $ def
@@ -40,16 +65,22 @@ main = do
             , modMask            = mod4Mask
             , borderWidth        = 2
             , normalBorderColor  = "#444444"
-            , focusedBorderColor = "#88c0d0"
-            , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+            , focusedBorderColor = "#81a2be"
+            , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "d"]
             , layoutHook         = myLayout
             , manageHook         = manageDocks <+> myManageHook
+            , logHook            = dynamicLogWithPP xmobarPP
+                { ppOutput = hPutStrLn xmobarProc
+                , ppCurrent = xmobarColor "#81a2be" "" . wrap "[" "]"
+                , ppTitle   = xmobarColor "#c5c8c6" "" . shorten 50
+                , ppSep     = " <fc=#444444>|</fc> "
+                }
             }
         `additionalKeysP` keybinds
 
 myLayout =
     avoidStruts
-    $ spacingWithEdge 5
+    . smartBorders
     $ tiled ||| Mirror tiled ||| Full
   where
     tiled = Tall 1 (3/100) (1/2)
@@ -57,7 +88,6 @@ myLayout =
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "Firefox" --> doShift "2"
-    , className =? "discord" --> doShift "3"
-    , className =? "Spotify" --> doShift "4"
+    , className =? "vesktop" --> doShift "d"
     , isDialog               --> doCenterFloat
     ]

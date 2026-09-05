@@ -1,0 +1,22 @@
+Config { font    = "xft:JetBrainsMono Nerd Font:size=11:bold"
+       , additionalFonts = []
+       , bgColor = "#1d1f21"
+       , fgColor = "#c5c8c6"
+       , position = Bottom
+       , border = NoBorder
+       , alpha = 255
+       , commands = [ Run Cpu ["-L","3","-H","50","--normal","#98a84b","--high","#cc6666"] 20
+                    , Run Memory ["-t","Mem: <usedratio>%"] 20
+                    , Run Date "%a %b %d  %H:%M" "date" 10
+                    , Run Battery [ "-t", "<acstatus>: <left>%"
+                                  , "-L", "20", "-H", "80"
+                                  , "-l", "#cc6666", "-h", "#98a84b"
+                                  , "--", "-O", "AC", "-i", "Full"
+                                  ] 50
+                    , Run Volume "default" "Master" [] 10
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %cpu% <fc=#444444>|</fc> %memory% <fc=#444444>|</fc> %battery% <fc=#444444>|</fc> %default:Master% <fc=#444444>|</fc> <fc=#81a2be>%date%</fc> "
+       }
