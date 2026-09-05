@@ -15,13 +15,14 @@
     # Disable platform serial ports to prevent timeout on INT3515 phantom serial buses
     # "8250.nr_uarts=0"
 
-    # Disable PCIe Active State Power Management to fix mt7921e Wi-Fi resume failure (error -110)
-    # "pcie_aspm=off"
-
     "quiet"
     "splash"
     "loglevel=3"
   ];
+
+  boot.extraModprobeConfig = ''
+    options mt7921e disable_aspm=1
+  '';
 
   networking.hostName = "nixie";
 

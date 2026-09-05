@@ -2,11 +2,14 @@
   powerManagement.enable = true;
 
   services = {
-    logind.settings.Login = {
-        HandleLowBattery = "hibernate";
-    };
 
     upower.enable = true;
+    upower.settings = {
+        PercentageLow = 15;
+        PercentageCritical = 5;
+        PercentageAction = 3;
+        CriticalPowerAction = "Hibernate";
+    };
 
     tlp = {
       enable = true;
@@ -30,9 +33,6 @@
 
         WIFI_PWR_ON_AC = "off";
         WIFI_PWR_ON_BAT = "on";
-
-        START_CHARGE_THRESH_BAT0 = 75;
-        STOP_CHARGE_THRESH_BAT0 = 80;
       };
     };
   };
