@@ -1,12 +1,20 @@
-{ pkgs, lib, ... }: {
-    environment.systemPackages = [ pkgs.sbctl ]; # for debugging/enrolling keys
+{ inputs, pkgs, lib, ... }:
 
-    boot.lanzaboote = {
-        enable = true;
-        pkiBundle = "/etc/secureboot";
+{
+  imports = {
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
 
-    # Lanzaboote replaces systemd-boot
-    boot.loader.systemd-boot.enable = lib.mkForce false;
+  environment.systemPackages = [ pkgs.sbctl ];
+
+  boot.lanzaboote = {
+    enable = true;
+    pkiBundle = "/etc/secureboot";
+  };
+
+  boot.loader.systemd-boot.enable = lib.mkForce false;
 }
 
