@@ -1,14 +1,13 @@
 { inputs, pkgs, lib, ... }:
 
 {
-  imports = {
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+  imports = [
+    inputs.lanzaboote.nixosModules.lanzaboote
+  ];
 
-  environment.systemPackages = [ pkgs.sbctl ];
+  environment.systemPackages = [
+    pkgs.sbctl
+  ];
 
   boot.lanzaboote = {
     enable = true;
