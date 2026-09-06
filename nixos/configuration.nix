@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/system.nix
+    ./modules/lanzaboote.nix
     ./modules/keyboard.nix
     ./modules/networking.nix
     ./modules/users.nix
