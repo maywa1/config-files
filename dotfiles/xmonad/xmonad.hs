@@ -16,6 +16,7 @@ keybinds =
     , ("M-c",        kill)
     , ("M-S-r",      spawn "xmonad --recompile && xmonad --restart")
 
+    , ("M-l",      spawn "slock")
     , ("M-S-s",      spawn "flameshot gui")
     -- Master pane
     , ("M-,", sendMessage (IncMasterN 1))

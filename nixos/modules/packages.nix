@@ -51,5 +51,6 @@ in{
     xclip
     xmobar
     zls
+    slock
   ];
 }
