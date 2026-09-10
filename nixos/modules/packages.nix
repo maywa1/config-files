@@ -56,5 +56,6 @@ in{
     xclip
     flameshot
     dunst
+    flameshot
   ];
 }

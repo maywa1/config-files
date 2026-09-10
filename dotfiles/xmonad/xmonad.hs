@@ -17,6 +17,7 @@ keybinds =
     , ("M-S-r",      spawn "xmonad --recompile && xmonad --restart")
     , ("M-S-q",      spawn "xmonad --recompile && xmonad --restart") -- alias, some muscle memory expects this
 
+    , ("M-S-s",      spawn "flameshot gui")
     -- Master pane
     , ("M-,", sendMessage (IncMasterN 1))
     , ("M-.", sendMessage (IncMasterN (-1)))
@@ -65,8 +66,8 @@ main = do
             { terminal           = "alacritty"
             , modMask            = mod4Mask
             , borderWidth        = 2
-            , normalBorderColor  = "#444444"
-            , focusedBorderColor = "#81a2be"
+            , normalBorderColor  = "#636363"
+            , focusedBorderColor = "#a6a6a6"
             , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "d"]
             , layoutHook         = myLayout
             , manageHook         = manageDocks <+> myManageHook
@@ -87,8 +88,8 @@ myStartupHook = do
 myLayout =
     avoidStruts
     . smartBorders
-    $ tiled ||| Mirror tiled ||| Full
-  where
+    $ spacing 10 (tiled ||| Mirror tiled ||| Full)
+    where
     tiled = Tall 1 (3/100) (1/2)
 
 myManageHook :: ManageHook
