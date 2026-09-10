@@ -14,6 +14,7 @@ in{
     dunst
     emmet-language-server
     fastfetch
+    feh
     flameshot
     flameshot
     gcc
