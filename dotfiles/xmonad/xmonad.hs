@@ -12,10 +12,9 @@ import XMonad.Util.SpawnOnce
 
 keybinds =
     [ ("M-<Return>", spawn "alacritty")
-    , ("M-<Space>",  spawn "dmenu_run -i -l 15 -fn 'JetBrainsMono Nerd Font:size=12' -nb '#1d1f21' -nf '#c5c8c6' -sb '#81a2be' -sf '#1d1f21' -p '>'")
+    , ("M-<Space>",  spawn "rofi -show drun")
     , ("M-c",        kill)
     , ("M-S-r",      spawn "xmonad --recompile && xmonad --restart")
-    , ("M-S-q",      spawn "xmonad --recompile && xmonad --restart") -- alias, some muscle memory expects this
 
     , ("M-S-s",      spawn "flameshot gui")
     -- Master pane

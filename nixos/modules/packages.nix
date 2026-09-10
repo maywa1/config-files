@@ -9,14 +9,24 @@ in{
     bibata-cursors
     brightnessctl
     btop
+    cabal-cli
     cargo
+    dunst
     emmet-language-server
     fastfetch
+    flameshot
+    flameshot
     gcc
     git
+    hs.cabal-install
+    hs.ghc
+    hs.haskell-language-server
+    hs.hlint
+    hs.hoogle
     hyprcursor
     hyprlock
     hyprpaper
+    hyprshot
     inputs.helium.packages.${pkgs.system}.default
     lua-language-server
     lua51Packages.luarocks
@@ -25,9 +35,11 @@ in{
     nodejs
     obsidian
     prettier
+    prismlauncher
     pyright
     python3
     ripgrep
+    rofi
     rust-analyzer
     rustc
     tmux
@@ -42,21 +54,8 @@ in{
     waybar
     wget
     wl-clipboard
-    zls
-    prismlauncher
-    hyprshot
-    xmobar
-    hs.ghc
-    hs.cabal-install
-    hs.haskell-language-server
-    hs.hlint
-    hs.hoogle
-    cabal-cli
-    dmenu
     xclip
-    flameshot
-    dunst
-    flameshot
-    rofi
+    xmobar
+    zls
   ];
 }

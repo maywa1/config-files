@@ -1,8 +1,7 @@
-@theme "~/.cache/wal/colors-rofi-dark.rasi"
+@theme "~/.config/rofi/theme.rasi"
+
 configuration {
 	modi: "drun,run,ssh";
-	font: "Inconsolata 12";
-	text-color: "#ff0000";
 	show-icons: true;
 	hide-scrollbar: true;
 	terminal: "alacritty";
@@ -17,7 +16,7 @@ configuration {
 
 	display-drun: ">";
 	display-run: ">";
-	display-ssh: "";
+	display-ssh: "";
 
 	parse-known-hosts: false;
 }
