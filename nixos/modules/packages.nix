@@ -51,6 +51,5 @@ in{
     xclip
     xmobar
     zls
-    darkman
   ];
 }
