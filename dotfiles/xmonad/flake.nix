@@ -20,8 +20,20 @@
         pkgs.libxinerama
       ];
 
+      cleanSrc = pkgs.lib.cleanSourceWith {
+        src = ./.;
+        filter = name: type:
+          let base = baseNameOf name;
+          in !(builtins.elem base [
+            "dist-newstyle"
+            "result"
+            ".direnv"
+            ".ghc.environment"
+          ]);
+      };
+
       xmonad-config = pkgs.haskell.lib.overrideCabal
-        (haskellPackages.callCabal2nix "xmonad-config" ./. { })
+        (haskellPackages.callCabal2nix "xmonad-config" cleanSrc { })
         (old: {
           configureFlags = (old.configureFlags or []) ++ [
             "--extra-lib-dirs=${pkgs.lib.makeLibraryPath x11Libs}"

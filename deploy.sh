@@ -13,14 +13,14 @@ echo "applying dotfiles in .config"
 echo "Updating flake inputs..."
 nix flake update
 
+echo "Rebuilding NixOS for host: $HOSTNAME"
+sudo nixos-rebuild switch --flake ".#$HOSTNAME"
+
 echo "Staging changes..."
 git add .
 
 echo "Committing..."
 git commit -m "$COMMIT_MSG" || echo "No changes to commit."
-
-echo "Rebuilding NixOS for host: $HOSTNAME"
-sudo nixos-rebuild switch --flake ".#$HOSTNAME"
 
 echo "Pushing..."
 git push --set-upstream origin master

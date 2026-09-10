@@ -8,6 +8,7 @@ import XMonad.Layout.NoBorders (smartBorders)
 import qualified XMonad.StackSet as W
 import XMonad.Util.Run (spawnPipe)
 import System.IO (Handle, hPutStrLn)
+import XMonad.Util.SpawnOnce
 
 keybinds =
     [ ("M-<Return>", spawn "alacritty")
@@ -69,6 +70,7 @@ main = do
             , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "d"]
             , layoutHook         = myLayout
             , manageHook         = manageDocks <+> myManageHook
+            , startupHook        = myStartupHook
             , logHook            = dynamicLogWithPP xmobarPP
                 { ppOutput = hPutStrLn xmobarProc
                 , ppCurrent = xmobarColor "#81a2be" "" . wrap "[" "]"
@@ -77,6 +79,10 @@ main = do
                 }
             }
         `additionalKeysP` keybinds
+
+myStartupHook :: X ()
+myStartupHook = do
+    spawnOnce "dunst"
 
 myLayout =
     avoidStruts

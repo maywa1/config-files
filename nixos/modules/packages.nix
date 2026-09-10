@@ -55,5 +55,6 @@ in{
     dmenu
     xclip
     flameshot
+    dunst
   ];
 }
