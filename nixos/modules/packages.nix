@@ -25,10 +25,8 @@ in{
     hs.hlint
     hs.hoogle
     hyprcursor
-    hyprlock
-    hyprpaper
-    hyprshot
     inputs.helium.packages.${pkgs.system}.default
+    libsForQt5.qtstyleplugin-kvantum
     lua-language-server
     lua51Packages.luarocks
     neovim
@@ -47,14 +45,9 @@ in{
     tree-sitter
     typescript-language-server
     udiskie
-    universal-android-debloater
     uv
     vesktop
-    vicinae
     vimPlugins.LazyVim
-    waybar
-    wget
-    wl-clipboard
     xclip
     xmobar
     zls

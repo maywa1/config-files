@@ -1,7 +1,6 @@
 {  ... }:
 
 {
-
-    programs.hyprland.enable = true;
+    programs.dconf.enable = true;
     programs.git.enable = true;
 }

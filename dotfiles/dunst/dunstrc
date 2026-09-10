@@ -25,7 +25,7 @@ idle_threshold = 0
 font = DM Mono 12
 line_height = 2
 markup = full
-origin = "bottom-right"
+origin = "top-right"
 offset = "50x50"
 format = "<b>%s</b>\n%b"
 alignment = left
@@ -74,10 +74,6 @@ timeout = 0
 [usb]
 summary = Automount
 format = "<b>%s</b>\n%b"
-
-[helium]
-appname = Helium
-new_icon = helium-default
 
 [Spotify]
 appname = Spotify

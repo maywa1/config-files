@@ -1,32 +1,32 @@
 { config, lib, pkgs, ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth.enable = false;
+    # boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;
+    boot.plymouth.enable = false;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [
-    # Disable NVMe Autonomous Power State Transition (APST) to prevent the 31s SSD wake-up timeout
-    # "nvme_core.default_ps_max_latency_us=0"
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelParams = [
+        # Disable NVMe Autonomous Power State Transition (APST) to prevent the 31s SSD wake-up timeout
+        # "nvme_core.default_ps_max_latency_us=0"
 
-    # Disable platform serial ports to prevent timeout on INT3515 phantom serial buses
-    # "8250.nr_uarts=0"
+        # Disable platform serial ports to prevent timeout on INT3515 phantom serial buses
+        # "8250.nr_uarts=0"
 
-    "quiet"
-    "splash"
-    "loglevel=3"
-  ];
+        "quiet"
+        "splash"
+        "loglevel=3"
+    ];
 
-  boot.extraModprobeConfig = ''
-    options mt7921e disable_aspm=1
-  '';
+    boot.extraModprobeConfig = ''
+        options mt7921e disable_aspm=1
+    '';
 
-  networking.hostName = "nixie";
+    networking.hostName = "nixie";
 
-  time.timeZone = "Europe/Lisbon";
+    time.timeZone = "Europe/Lisbon";
 
-  system.stateVersion = "26.05";
+    system.stateVersion = "26.05";
 }
