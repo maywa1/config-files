@@ -23,8 +23,8 @@
     # Prompt (clean monochrome + pastel pink user@host)
     promptInit = ''
       setopt PROMPT_SUBST
-      PROMPT="%F{magenta}%n@%m%f %F{white}%~%f %# "
-      RPROMPT="%F{cyan}[%D{%H:%M}]%f"
+      PROMPT="%F{white}%n@%m%f %F{white}%~%f %# "
+      RPROMPT="%F{white}[%D{%H:%M}]%f"
     '';
 
     # vi mode + plugins

@@ -11,12 +11,12 @@ end
 return {
 
     {
-        "vague-theme/vague.nvim",
+        "kdheepak/monochrome.nvim",
         config = function()
             vim.g.transparent_background = 1
             vim.o.background = "dark"
 
-            ColorMyPencils("vague")
+            ColorMyPencils("monochrome")
         end
     },
 }

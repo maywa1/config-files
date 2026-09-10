@@ -1,22 +1,21 @@
-Config { font    = "xft:JetBrainsMono Nerd Font:size=11:bold"
+Config { font    = "xft:JetBrainsMono Nerd Font:size=12:bold"
        , additionalFonts = []
-       , bgColor = "#1d1f21"
-       , fgColor = "#c5c8c6"
-       , position = Bottom
-       , border = NoBorder
+       , bgColor = "#181818"
+       , fgColor = "#b9b9b9"
+       , position = BottomSize C 99 50
+       , textOffset = -1
+       , border = FullB
+       , borderColor = "#b9b9b9"
+       , borderWidth = 1
        , alpha = 255
-       , commands = [ Run Cpu ["-L","3","-H","50","--normal","#98a84b","--high","#cc6666"] 20
+       , commands = [ Run Cpu ["-L","3","-H","50"] 20
                     , Run Memory ["-t","Mem: <usedratio>%"] 20
-                    , Run Date "%a %b %d  %H:%M" "date" 10
-                    , Run Battery [ "-t", "<acstatus>: <left>%"
-                                  , "-L", "20", "-H", "80"
-                                  , "-l", "#cc6666", "-h", "#98a84b"
-                                  , "--", "-O", "AC", "-i", "Full"
-                                  ] 50
-                    , Run Volume "default" "Master" [] 10
+                    , Run Date "%d %B %Y - %A | %H:%M" "date" 10
+                    , Run Battery [ "-t", "bat. <left>%" ] 50
+                    , Run Volume "default" "Master" ["-t", "spk.<volume>%"] 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ %cpu% <fc=#444444>|</fc> %memory% <fc=#444444>|</fc> %battery% <fc=#444444>|</fc> %default:Master% <fc=#444444>|</fc> <fc=#81a2be>%date%</fc> "
+       , template = "   %StdinReader%   }{   %cpu% | %memory% | %default:Master% | %battery% | %date%   "
        }

@@ -65,13 +65,13 @@ main = do
         $ def
             { terminal           = "alacritty"
             , modMask            = mod4Mask
-            , borderWidth        = 2
-            , normalBorderColor  = "#636363"
-            , focusedBorderColor = "#a6a6a6"
+            , borderWidth        = 1
+            , normalBorderColor  = "#424242"
+            , focusedBorderColor = "#6e6e6e"
             , workspaces         = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "d"]
-            , layoutHook         = myLayout
-            , manageHook         = manageDocks <+> myManageHook
-            , startupHook        = myStartupHook
+            , layoutHook         = layout
+            , manageHook         = manageDocks <+> manageRules
+            , startupHook        = startup
             , logHook            = dynamicLogWithPP xmobarPP
                 { ppOutput = hPutStrLn xmobarProc
                 , ppCurrent = xmobarColor "#81a2be" "" . wrap "[" "]"
@@ -81,19 +81,18 @@ main = do
             }
         `additionalKeysP` keybinds
 
-myStartupHook :: X ()
-myStartupHook = do
+startup :: X ()
+startup = do
     spawnOnce "dunst"
 
-myLayout =
+layout =
     avoidStruts
-    . smartBorders
     $ spacing 10 (tiled ||| Mirror tiled ||| Full)
     where
     tiled = Tall 1 (3/100) (1/2)
 
-myManageHook :: ManageHook
-myManageHook = composeAll
+manageRules :: ManageHook
+manageRules = composeAll
     [ className =? "Firefox" --> doShift "2"
     , className =? "vesktop" --> doShift "d"
     , isDialog               --> doCenterFloat
