@@ -57,5 +57,6 @@ in{
     flameshot
     dunst
     flameshot
+    rofi
   ];
 }
