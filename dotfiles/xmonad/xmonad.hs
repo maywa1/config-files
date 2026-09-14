@@ -60,7 +60,7 @@ keybinds =
 main :: IO ()
 main = do
     xmobarProc <- spawnPipe "xmobar ~/.config/xmobar/xmobarrc"
-    xmonad
+    launch
         . docks
         $ def
             { terminal           = "alacritty"

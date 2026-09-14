@@ -52,5 +52,6 @@ in{
     xmobar
     zls
     slock
+    butterfly
   ];
 }
