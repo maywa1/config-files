@@ -3,9 +3,13 @@ name: xmonad-config
 version: 0.1.0.0
 
 executable xmonad-config
-  main-is: xmonad.hs
-  build-depends:
-      base
-    , xmonad
-    , xmonad-contrib
+  main-is:          xmonad.hs
+  hs-source-dirs:   ., lib
+  other-modules:    ClipboardManager
+  build-depends:    base
+                   , xmonad
+                   , xmonad-contrib
+                   , process
+                   , directory
+                   , filepath
   default-language: Haskell2010
