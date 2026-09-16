@@ -30,7 +30,9 @@ in{
     libsForQt5.qtstyleplugin-kvantum
     lua-language-server
     lua51Packages.luarocks
-    neovim
+    (neovim.override {
+        extraPython3Packages = p: [ p.pynvim ];
+    })
     nixd
     nodejs
     obsidian
@@ -54,8 +56,5 @@ in{
     xclip
     xmobar
     zls
-    (python314.withPackages (ps: [
-      ps.pynvim
-    ]))
     ];
 }
