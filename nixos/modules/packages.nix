@@ -9,6 +9,7 @@ in{
     bibata-cursors
     brightnessctl
     btop
+    butterfly
     cabal-cli
     cargo
     dunst
@@ -41,6 +42,8 @@ in{
     rofi
     rust-analyzer
     rustc
+    sioyek
+    slock
     tmux
     tree-sitter
     typescript-language-server
@@ -51,7 +54,5 @@ in{
     xclip
     xmobar
     zls
-    slock
-    butterfly
   ];
 }
