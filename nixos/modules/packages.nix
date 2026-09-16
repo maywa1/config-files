@@ -58,5 +58,9 @@ in{
     xclip
     xmobar
     zls
-    ];
+    (texlive.withPackages (ps: with ps; [
+      scheme-small
+      latexmk
+    ]))
+  ];
 }
