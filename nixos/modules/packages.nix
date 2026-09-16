@@ -37,7 +37,9 @@ in{
     prettier
     prismlauncher
     pyright
-    python3.withPackages(ps: with ps; [pynvim])
+    (python3.withPackages (ps: with ps; [
+        pynvim
+    ]))
     ripgrep
     rofi
     rust-analyzer
