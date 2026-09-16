@@ -30,16 +30,14 @@ in{
     libsForQt5.qtstyleplugin-kvantum
     lua-language-server
     lua51Packages.luarocks
-    (neovim.override {
-        extraPython3Packages = p: [ p.pynvim ];
-    })
+    neovim
     nixd
     nodejs
     obsidian
     prettier
     prismlauncher
     pyright
-    python3
+    python3.withPackages(ps: with ps; [pynvim])
     ripgrep
     rofi
     rust-analyzer
