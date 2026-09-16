@@ -54,6 +54,6 @@ in{
     xclip
     xmobar
     zls
-    python3Packages.pynvim
+    python314Packages.pynvim
   ];
 }
