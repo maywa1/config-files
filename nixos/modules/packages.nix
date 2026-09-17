@@ -10,7 +10,6 @@ in{
     brightnessctl
     btop
     butterfly
-    cabal-cli
     cargo
     dunst
     emmet-language-server

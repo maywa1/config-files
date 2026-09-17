@@ -156,7 +156,7 @@ main = do
 startup :: X ()
 startup = do
     spawnOnce "dunst"
-    liftIO $ void $ forkIO clipboardDaemon
+    spawnOnce "~/./.config/xmonad/result/bin/clipboard-daemon"
 
 layout =
     avoidStruts
