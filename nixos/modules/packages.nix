@@ -1,9 +1,12 @@
 { pkgs, inputs, ... }:
-let
-    hs = pkgs.haskellPackages;
-in{
 
+let
+  hs = pkgs.haskellPackages;
+
+in
+{
   environment.systemPackages = with pkgs; [
+    # Existing packages
     alacritty
     alejandra
     bibata-cursors
@@ -15,7 +18,6 @@ in{
     emmet-language-server
     fastfetch
     feh
-    flameshot
     flameshot
     gcc
     git
@@ -36,12 +38,14 @@ in{
     prismlauncher
     pyright
     ripgrep
+
     (neovim.override {
-        withPython3 = true;
-        extraPython3Packages = ps: with ps; [
-            pynvim
-        ];
+      withPython3 = true;
+      extraPython3Packages = ps: with ps; [
+        pynvim
+      ];
     })
+
     rofi
     rust-analyzer
     rustc
@@ -57,9 +61,21 @@ in{
     xclip
     xmobar
     zls
+
     (texlive.withPackages (ps: with ps; [
       scheme-small
       latexmk
     ]))
+
+    # XMonad's runtime dependencies
+    libx11
+    libxrandr
+    libxscrnsaver
+    libxext
+    libxinerama
+
+    # Flake dev-shell/build tooling
+    pkg-config
   ];
 }
+
