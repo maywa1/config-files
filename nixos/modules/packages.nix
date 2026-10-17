@@ -7,6 +7,8 @@ in
 {
   environment.systemPackages = with pkgs; [
     godot
+    gdtoolkit_4
+
     alacritty
     alejandra
     bibata-cursors
@@ -27,7 +29,7 @@ in
     hs.hlint
     hs.hoogle
     hyprcursor
-    inputs.helium.packages.${pkgs.system}.default
+    inputs.helium.packages.${pkgs.stdenv.hostPlatform.system}.default
     libsForQt5.qtstyleplugin-kvantum
     lua-language-server
     lua51Packages.luarocks

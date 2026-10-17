@@ -116,6 +116,7 @@ return {
         })
         vim.lsp.enable("zls")
 
+        vim.lsp.enable("gdscript")
         -- Completion setup
         cmp.setup({
             snippet = {

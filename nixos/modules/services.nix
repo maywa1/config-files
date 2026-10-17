@@ -7,11 +7,12 @@
 
   services.displayManager.ly.enable = true;
 
+  services.libinput.touchpad.naturalScrolling = true;
+
   services.xserver = {
     enable = true;
     autoRepeatDelay = 200;
     autoRepeatInterval = 35;
-    libinput.naturalScrolling = true;
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
