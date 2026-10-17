@@ -6,7 +6,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    # Existing packages
+    godot
     alacritty
     alejandra
     bibata-cursors

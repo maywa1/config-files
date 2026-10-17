@@ -29,7 +29,6 @@ return {
             capabilities = capabilities,
         })
 
-        -- Haskell
         vim.lsp.enable("clangd")
 
         -- Haskell

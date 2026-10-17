@@ -156,6 +156,7 @@ main = do
 startup :: X ()
 startup = do
     spawnOnce "dunst"
+    spawnOnce "feh --bg-fil ~/nixos-conf/wallpapers/black.png"
     spawnOnce "~/./.config/xmonad/result/bin/clipboard-daemon"
 
 layout =

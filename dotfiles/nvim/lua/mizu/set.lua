@@ -1,24 +1,10 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-
--- Create an augroup for filetype-specific tabs
-local ft_tabs = vim.api.nvim_create_augroup("FileTypeTabs", { clear = true })
-
--- JS, TS, TSX files -> 2 spaces
-vim.api.nvim_create_autocmd("FileType", {
-  group = ft_tabs,
-  pattern = { "javascript", "typescript", "typescriptreact" },
-  callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.expandtab = true
-  end,
-})
 
 vim.opt.smartindent = true
 
