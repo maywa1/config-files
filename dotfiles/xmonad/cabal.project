@@ -1,0 +1,2 @@
+packages: .
+constraints: xmonad-contrib -use_xft

@@ -71,15 +71,15 @@
   (major1) == 0 && (major2) == 18 && (minor) <= 2)
 #endif /* MIN_VERSION_xmonad_contrib */
 
-/* tool gcc-15.3.0 */
+/* tool gcc-16.2.0 */
 #ifndef TOOL_VERSION_gcc
-#define TOOL_VERSION_gcc "15.3.0"
+#define TOOL_VERSION_gcc "16.2.0"
 #endif /* TOOL_VERSION_gcc */
 #ifndef MIN_TOOL_VERSION_gcc
 #define MIN_TOOL_VERSION_gcc(major1,major2,minor) (\
-  (major1) <  15 || \
-  (major1) == 15 && (major2) <  3 || \
-  (major1) == 15 && (major2) == 3 && (minor) <= 0)
+  (major1) <  16 || \
+  (major1) == 16 && (major2) <  2 || \
+  (major1) == 16 && (major2) == 2 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_gcc */
 /* tool ghc-9.10.3 */
 #ifndef TOOL_VERSION_ghc
@@ -101,15 +101,15 @@
   (major1) == 9 && (major2) <  10 || \
   (major1) == 9 && (major2) == 10 && (minor) <= 3)
 #endif /* MIN_TOOL_VERSION_ghc_pkg */
-/* tool gpp-15.3.0 */
+/* tool gpp-16.2.0 */
 #ifndef TOOL_VERSION_gpp
-#define TOOL_VERSION_gpp "15.3.0"
+#define TOOL_VERSION_gpp "16.2.0"
 #endif /* TOOL_VERSION_gpp */
 #ifndef MIN_TOOL_VERSION_gpp
 #define MIN_TOOL_VERSION_gpp(major1,major2,minor) (\
-  (major1) <  15 || \
-  (major1) == 15 && (major2) <  3 || \
-  (major1) == 15 && (major2) == 3 && (minor) <= 0)
+  (major1) <  16 || \
+  (major1) == 16 && (major2) <  2 || \
+  (major1) == 16 && (major2) == 2 && (minor) <= 0)
 #endif /* MIN_TOOL_VERSION_gpp */
 /* tool haddock-2.31.1 */
 #ifndef TOOL_VERSION_haddock

@@ -75,6 +75,8 @@ in
     libxscrnsaver
     libxext
     libxinerama
+    libxft
+    libxcb
 
     # Flake dev-shell/build tooling
     pkg-config

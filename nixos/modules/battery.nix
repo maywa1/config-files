@@ -4,7 +4,7 @@
   services = {
 
     upower.enable = true;
-    upower.criticalPowerAction = "Hibernate";
+    upower.criticalPowerAction = "HybridSleep";
 
     tlp = {
       enable = true;

@@ -97,10 +97,10 @@ getSysconfDir :: IO FilePath
 
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 bindir     = "/home/maywai/.cabal/bin"
-libdir     = "/home/maywai/.cabal/lib/x86_64-linux-ghc-9.10.3-394c/xmonad-config-0.1.0.0-inplace-xmonad-config"
-dynlibdir  = "/home/maywai/.cabal/lib/x86_64-linux-ghc-9.10.3-394c"
-datadir    = "/home/maywai/.cabal/share/x86_64-linux-ghc-9.10.3-394c/xmonad-config-0.1.0.0"
-libexecdir = "/home/maywai/.cabal/libexec/x86_64-linux-ghc-9.10.3-394c/xmonad-config-0.1.0.0"
+libdir     = "/home/maywai/.cabal/lib/x86_64-linux-ghc-9.10.3-b0b4/xmonad-config-0.1.0.0-inplace-xmonad-config"
+dynlibdir  = "/home/maywai/.cabal/lib/x86_64-linux-ghc-9.10.3-b0b4"
+datadir    = "/home/maywai/.cabal/share/x86_64-linux-ghc-9.10.3-b0b4/xmonad-config-0.1.0.0"
+libexecdir = "/home/maywai/.cabal/libexec/x86_64-linux-ghc-9.10.3-b0b4/xmonad-config-0.1.0.0"
 sysconfdir = "/home/maywai/.cabal/etc"
 
 getBinDir     = catchIO (getEnv "xmonad_config_bindir")     (\_ -> return bindir)
