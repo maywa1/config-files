@@ -1,33 +1,26 @@
-{ config, lib, pkgs, ... }:
+{pkgs, ...}: {
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = ["nix-command" "flakes"];
+  };
 
-{
-    nix.settings.auto-optimise-store = true;
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.plymouth.enable = true;
 
-    # boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.plymouth.enable = false;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "loglevel=3"
+  ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.kernelParams = [
-        # Disable NVMe Autonomous Power State Transition (APST) to prevent the 31s SSD wake-up timeout
-        # "nvme_core.default_ps_max_latency_us=0"
+  # Work around mt7921e ASPM issues on this laptop.
+  boot.extraModprobeConfig = ''
+    options mt7921e disable_aspm=1
+  '';
 
-        # Disable platform serial ports to prevent timeout on INT3515 phantom serial buses
-        # "8250.nr_uarts=0"
+  networking.hostName = "nixie";
+  time.timeZone = "Europe/Lisbon";
 
-        "quiet"
-        "splash"
-        "loglevel=3"
-    ];
-
-    boot.extraModprobeConfig = ''
-        options mt7921e disable_aspm=1
-    '';
-
-    networking.hostName = "nixie";
-
-    time.timeZone = "Europe/Lisbon";
-
-    system.stateVersion = "26.05";
+  system.stateVersion = "26.05";
 }

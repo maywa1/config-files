@@ -1,13 +1,8 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   users.users.maywai = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      tree
-    ];
+    extraGroups = ["wheel" "networkmanager" "video"];
   };
+
   users.defaultUserShell = pkgs.zsh;
-  system.userActivationScripts.zshrc = "touch .zshrc";
 }

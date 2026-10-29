@@ -1,22 +1,29 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Optional commit message argument
+REPO_ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+HOST="$(hostname -s)"
 COMMIT_MSG="${1:-Quick update, like new package}"
-HOSTNAME="$(hostname)"
 
-echo "applying dotfiles in .config"
+cd "$REPO_ROOT"
+
+echo "==> Applying dotfiles from $HOME/.config"
 ./apply-dotfiles.sh
 
-echo "Updating flake inputs..."
+echo "==> Updating flake inputs"
 nix flake update
 
-echo "Staging changes..."
-git add .
+echo "==> Rebuilding NixOS for host: $HOST"
+sudo nixos-rebuild switch --flake "$REPO_ROOT#$HOST"
 
-echo "Committing..."
-git commit -m "$COMMIT_MSG" || echo "No changes to commit."
+echo "==> Staging changes"
+git add -A
 
-echo "Rebuilding NixOS for host: $HOSTNAME"
-sudo nixos-rebuild switch --flake ".#$HOSTNAME"
+echo "==> Committing"
+if git diff --cached --quiet; then
+  echo "No changes to commit."
+else
+  git commit -m "$COMMIT_MSG"
+fi
 
+echo "Done. Changes were committed but not pushed."

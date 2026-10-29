@@ -1,10 +1,11 @@
-{
+{...}: {
   powerManagement.enable = true;
 
   services = {
-
-    upower.enable = true;
-    upower.criticalPowerAction = "HybridSleep";
+    upower = {
+      enable = true;
+      criticalPowerAction = "HybridSleep";
+    };
 
     tlp = {
       enable = true;
