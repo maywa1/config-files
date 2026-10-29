@@ -86,5 +86,7 @@ in {
         scheme-small
         latexmk
       ]))
+
+    steam
   ];
 }
